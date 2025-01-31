@@ -19,9 +19,19 @@ body {
   margin: 0;
 }
 
-h1, h2 {
+/* Reset margins */
+h1,
+h2 {
   margin: 0;
   font-weight: inherit;
+}
+
+/* Make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
 /* -------------------------------- */

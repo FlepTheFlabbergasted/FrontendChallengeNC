@@ -13,14 +13,26 @@ main {
 
 h1 {
   color: #72035D;
+
+  @media (orientation: portrait) {
+    h1 {
+      margin-bottom: 24px;
+    }
+  }
 }
 
-@media (orientation: landscape) {
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-top: 24px;
 
-}
+  app-input {
+    width: 278px;
+  }
 
-@media (orientation: portrait) {
-  h1 {
-    margin-bottom: 25px;
+  @media (orientation: landscape) {
+    flex-direction: row;
+    gap: 24px;
   }
 }

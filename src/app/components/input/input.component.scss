@@ -1,0 +1,65 @@
+:host {
+  display: block;
+}
+
+.input-wrapper {
+  position: relative;
+  font-size: 0.875em; // 14px at 16px default
+
+  input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 16px;
+  }
+
+  &:focus-within {
+    .notch-piece {
+      border-width: 2px;
+      border-color: #72035D;
+    }
+  }
+
+  .notch {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    &-piece {
+      height: 100%;
+      border: 1px solid #757575;
+
+      &__leading {
+        width: 0.75em; // 12px at 16px default
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+      }
+
+      &__notch {
+        flex: 0 0 auto;
+        padding-left: 0;
+        padding: 0 4px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+      }
+
+      &__trailing {
+        flex-grow: 1;
+        border-left: none;
+        border-radius: 0 4px 4px 0;
+      }
+
+      label {
+        position: relative;
+        top: -0.6em;
+        pointer-events: all;
+      }
+    }
+  }
+}
