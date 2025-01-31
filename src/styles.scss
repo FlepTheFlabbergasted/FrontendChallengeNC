@@ -1,22 +1,5 @@
-/* -------------------------------- */
-/*              Fonts               */
-/* -------------------------------- */
-
-@font-face {
-  font-family: 'Open Sauce One';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url(https://cdn.jsdelivr.net/fontsource/fonts/open-sauce-one@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/open-sauce-one@latest/latin-400-normal.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Open Sauce One';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 800;
-  src: url(https://cdn.jsdelivr.net/fontsource/fonts/open-sauce-one@latest/latin-800-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/open-sauce-one@latest/latin-800-normal.woff) format('woff');
-}
+@import '@fontsource/open-sauce-one/400.css';
+@import '@fontsource/open-sauce-one/800.css';
 
 /* -------------------------------- */
 /*            Base setup            */
@@ -46,10 +29,7 @@ h1, h2 {
 /* -------------------------------- */
 
 body {
-  font-family: Open Sauce One;
-  font-weight: 400;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
+  font-family: 'Open Sauce One', sans-serif;
 }
 
 /* -------------------------------- */
