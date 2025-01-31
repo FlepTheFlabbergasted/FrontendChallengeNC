@@ -1,9 +1,26 @@
-
 main {
   width: 100%;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+
+  padding: 64px 24px 36px 24px;
+  background: #F5F3F3;
+}
+
+h1 {
+  color: #72035D;
+}
+
+@media (orientation: landscape) {
+
+}
+
+@media (orientation: portrait) {
+  h1 {
+    margin-bottom: 25px;
+  }
 }
