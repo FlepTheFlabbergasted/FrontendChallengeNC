@@ -1,7 +1,8 @@
-import { Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, importProvidersFrom } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { FitTextDirective } from './directives/fit-text.directive'
 import { InputComponent } from "./components/input/input.component";
+import { WINDOW } from './injection-tokens';
 
 @Component({
   selector: 'app-root',
