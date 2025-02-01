@@ -29,8 +29,7 @@ html, body {
 /* Reset margins */
 h1,
 h2 {
-  margin: 0;
-  font-weight: inherit;
+  margin: 0 !important;
 }
 
 /* Make form elements easier to work with */
@@ -47,13 +46,13 @@ select {
 
 body {
   font-family: 'Open Sauce One', sans-serif;
+  background: #F5F3F3;
 }
 
 /* -------------------------------- */
 /*          Global classes          */
 /* -------------------------------- */
 
-.font-800 {
-  font-weight: 800;
-  letter-spacing: -0.02em;
+.color-primary {
+  color: #72035D;
 }

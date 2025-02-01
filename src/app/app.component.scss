@@ -6,33 +6,37 @@ main {
   justify-content: center;
   align-items: center;
   position: relative;
-
   padding: 64px 24px 36px 24px;
-  background: #F5F3F3;
-}
-
-h1 {
-  color: #72035D;
 
   @media (orientation: portrait) {
+    justify-content: space-around;
+  }
+
+  .headings-container {
+    width: 100%;
+
     h1 {
-      margin-bottom: 24px;
+      @media (orientation: portrait) {
+        h1 {
+          margin-bottom: 24px;
+        }
+      }
     }
   }
-}
 
-.event-form {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  margin-top: 24px;
+  .event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 49px;
 
-  app-input {
-    width: 278px;
-  }
+    mat-form-field {
+      width: 278px;
+    }
 
-  @media (orientation: landscape) {
-    flex-direction: row;
-    gap: 24px;
+    @media (orientation: landscape) {
+      flex-direction: row;
+      gap: 24px;
+      margin-top: 24px;
+    }
   }
 }

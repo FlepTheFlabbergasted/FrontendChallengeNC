@@ -47,8 +47,8 @@ $frontend-challenge-accent: mat.define-palette($neutral-grey-palette, 100);
 
 $app-typography-config: mat.define-typography-config(
   $font-family: 'Open Sauce One',
-  $headline-5: mat.define-typography-level($font-weight: 800, $font-size: 3rem, $line-height: 1, $letter-spacing: -0.02rem), /* h1 */
-  $headline-6: mat.define-typography-level($font-weight: 400, $font-size: 2rem, $line-height: 1, $letter-spacing: normal), /* h2 */
+  $headline-5: mat.define-typography-level($font-weight: 800, $font-size: 3rem, $line-height: 1.66, $letter-spacing: -0.02em), /* h1 */
+  $headline-6: mat.define-typography-level($font-weight: 400, $font-size: 2rem, $line-height: 1.66, $letter-spacing: normal), /* h2 */
   /* 0.875rem = 14px at 16px default */
   $body-1: mat.define-typography-level($font-weight: 400, $font-size: 0.875rem, $line-height: 2, $letter-spacing: normal), /* input and label text */
   $body-2: mat.define-typography-level($font-weight: 400, $font-size: 0.875rem, $line-height: 1, $letter-spacing: normal), /* p */
