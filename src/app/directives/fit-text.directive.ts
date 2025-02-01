@@ -17,7 +17,7 @@ export class FitTextDirective implements AfterViewInit, OnDestroy {
   resizeObserver!: ResizeObserver;
   mutationObserver!: MutationObserver;
 
-  readonly resizeAndMutationThrottleTimeMs = 50;
+  readonly resizeAndMutationDebounceTimeMs = 50;
 
   constructor(private el: ElementRef<HTMLElement>) {
     this.resizeObserver = new ResizeObserver(() => this.resizeAndMutationSubject.next());
@@ -25,13 +25,13 @@ export class FitTextDirective implements AfterViewInit, OnDestroy {
 
     fromEvent(this.window, 'resize')
     .pipe(
-      throttleTime(this.resizeAndMutationThrottleTimeMs),
+      debounceTime(this.resizeAndMutationDebounceTimeMs),
       takeUntilDestroyed(),
     )
     .subscribe(() => this.resizeAndMutationSubject.next());
 
     this.resizeAndMutationSubject.pipe(
-      debounceTime(this.resizeAndMutationThrottleTimeMs),
+      debounceTime(this.resizeAndMutationDebounceTimeMs),
       takeUntilDestroyed(),
     )
     .subscribe(() => this.resizeText());
