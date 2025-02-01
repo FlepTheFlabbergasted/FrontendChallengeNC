@@ -28,8 +28,6 @@ export class FitTextDirective implements AfterViewInit {
 
     if (!parent) return;
 
-    const parentContentWidth = this.getElementContentWidth(parent);
-
     let min = this.minFontSizePx;
     let max = this.maxFontSizePx;
     let best = min;
@@ -44,7 +42,7 @@ export class FitTextDirective implements AfterViewInit {
       const mid = Math.floor((min + max) / 2);
       element.style.fontSize = `${mid}px`;
 
-      if (element.scrollWidth > parentContentWidth) {
+      if (element.scrollWidth > parent.clientWidth) {
         // Too big, decrease size
         max = mid - 1;
       } else {
@@ -55,12 +53,5 @@ export class FitTextDirective implements AfterViewInit {
     }
 
     element.style.fontSize = `${best}px`;
-  }
-
-  getElementContentWidth(element: HTMLElement) {
-    var styles = this.window.getComputedStyle(element);
-    var padding = parseFloat(styles.paddingLeft) + parseFloat(styles.paddingRight);
-
-    return element.clientWidth - padding;
   }
 }

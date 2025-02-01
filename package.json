@@ -18,10 +18,12 @@
     "@angular/core": "^17.3.0",
     "@angular/forms": "^17.3.0",
     "@angular/material": "^17.3.10",
+    "@angular/material-luxon-adapter": "^19.1.2",
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "@fontsource/open-sauce-one": "^5.1.0",
+    "luxon": "^3.5.0",
     "prettier": "^3.2.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -31,6 +33,7 @@
     "@angular-devkit/build-angular": "^17.3.6",
     "@angular/cli": "^17.3.6",
     "@angular/compiler-cli": "^17.3.0",
+    "@types/luxon": "^3.4.2",
     "typescript": "~5.4.2"
   }
 }

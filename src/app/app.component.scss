@@ -15,11 +15,9 @@ main {
   .headings-container {
     width: 100%;
 
-    h1 {
-      @media (orientation: portrait) {
-        h1 {
-          margin-bottom: 24px;
-        }
+    @media (orientation: portrait) {
+      h1 {
+        margin-bottom: 24px;
       }
     }
   }
