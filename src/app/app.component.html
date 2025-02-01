@@ -2,10 +2,17 @@
   <h1 appFitText class="font-800">Time to Midsummer Eve</h1>
   <h2 appFitText>20 days, 3 h, 15m, 10s</h2>
 
-  <div class="input-container">
-    <app-input type="text" label="Title"></app-input>
-    <app-input type="date" label="Date"></app-input>
-  </div>
+  <form class="event-form">
+    <mat-form-field subscriptSizing="dynamic">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Midsummer eve">
+    </mat-form-field>
+
+    <mat-form-field subscriptSizing="dynamic">
+      <mat-label>Date</mat-label>
+      <input matInput placeholder="2025-06-06">
+    </mat-form-field>
+  </form>
 </main>
 
 <router-outlet />
