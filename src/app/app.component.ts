@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, Signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, Signal } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { FitTextDirective } from './directives/fit-text.directive'
 import { MatInputModule } from '@angular/material/input';
@@ -22,6 +22,7 @@ import { filter, map } from 'rxjs';
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   timeUntilEvent$: Signal<DurationObjectUnits | undefined>;

@@ -1,32 +1,59 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, inject } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, AfterViewInit, Directive, ElementRef, HostListener, inject, Input, NgZone, OnDestroy } from '@angular/core';
 import { WINDOW } from '../injection-tokens';
+import { debounceTime, fromEvent, Subject, throttleTime } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Directive({
   selector: '[appFitText]',
-  standalone: true
+  standalone: true,
 })
-export class FitTextDirective implements AfterViewInit {
-  private readonly window = inject(WINDOW);
-  private readonly minFontSizePx = 10;
-  private readonly maxFontSizePx = 300;
+export class FitTextDirective implements AfterViewInit, OnDestroy {
+  @Input() minFontSizePx = 10;
+  @Input() maxFontSizePx = 300;
 
-  constructor(private el: ElementRef<HTMLElement>) {}
+  window = inject(WINDOW);
 
-  ngAfterViewInit() {
-    // Wait for element to have rendered before resizing
-    setTimeout(() => this.resizeText(), 50);
+  resizeAndMutationSubject = new Subject<void>();
+  resizeObserver!: ResizeObserver;
+  mutationObserver!: MutationObserver;
+
+  readonly resizeAndMutationThrottleTimeMs = 50;
+
+  constructor(private el: ElementRef<HTMLElement>) {
+    this.resizeObserver = new ResizeObserver(() => this.resizeAndMutationSubject.next());
+    this.mutationObserver = new MutationObserver(() => this.resizeAndMutationSubject.next());
+
+    fromEvent(this.window, 'resize')
+    .pipe(
+      throttleTime(this.resizeAndMutationThrottleTimeMs),
+      takeUntilDestroyed(),
+    )
+    .subscribe(() => this.resizeAndMutationSubject.next());
+
+    this.resizeAndMutationSubject.pipe(
+      debounceTime(this.resizeAndMutationThrottleTimeMs),
+      takeUntilDestroyed(),
+    )
+    .subscribe(() => this.resizeText());
   }
 
-  @HostListener('window:resize')
-  onResize() {
-    this.resizeText();
+  ngAfterViewInit() {
+    this.resizeObserver.observe(this.el.nativeElement.parentElement as Element);
+    this.mutationObserver.observe(this.el.nativeElement, { childList: true, subtree: true, characterData: true });
+  }
+
+  ngOnDestroy(): void {
+    this.resizeObserver.disconnect();
+    this.mutationObserver.disconnect();
   }
 
   resizeText() {
     const element = this.el.nativeElement;
     const parent = element.parentElement;
 
-    if (!parent) return;
+    if (!parent) {
+      return;
+    }
 
     let min = this.minFontSizePx;
     let max = this.maxFontSizePx;
