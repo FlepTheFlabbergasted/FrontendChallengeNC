@@ -1,6 +1,6 @@
-import { AfterContentChecked, AfterViewChecked, AfterViewInit, Directive, ElementRef, HostListener, inject, Input, NgZone, OnDestroy } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, inject, Input, OnDestroy } from '@angular/core';
 import { WINDOW } from '../injection-tokens';
-import { debounceTime, fromEvent, Subject, throttleTime } from 'rxjs';
+import { debounceTime, fromEvent, Subject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Directive({

@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Signal } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { FitTextDirective } from './directives/fit-text.directive'
 import { MatInputModule } from '@angular/material/input';
