@@ -9,7 +9,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class FitTextDirective implements AfterViewInit, OnDestroy {
   @Input() minFontSizePx = 10;
-  @Input() maxFontSizePx = 300;
+  @Input() maxFontSizePx = 500;
 
   window = inject(WINDOW);
 
