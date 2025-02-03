@@ -1,18 +1,20 @@
 <main class="main">
   <div class="headings-container">
-    <h1 appFitText class="color-primary">Time to {{ nameControl.value || 'Half a year from now' }}</h1>
-    <h2 appFitText>{{ timeUntilEvent$()?.days }} days, {{ timeUntilEvent$()?.hours }} h, {{ timeUntilEvent$()?.minutes }}m, {{ timeUntilEvent$()?.seconds }}s</h2>
+    <h1 appFitText class="color-primary">Time to {{ titleControl.value || defaultEventTitle }}</h1>
+    <h2 appFitText>
+      {{ timeUntilEvent$()?.days }} days, {{ timeUntilEvent$()?.hours }} h, {{ timeUntilEvent$()?.minutes }}m, {{ timeUntilEvent$()?.seconds }}s
+    </h2>
   </div>
 
   <form class="event-form" [formGroup]="eventForm">
     <mat-form-field>
       <mat-label>Title</mat-label>
-      <input matInput placeholder="Midsummer eve" [formControl]="nameControl">
+      <input matInput placeholder="{{ defaultEventTitle }}" [formControl]="titleControl">
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Date</mat-label>
-      <input matInput [matDatepicker]="picker" placeholder="2025-06-20" [formControl]="dateControl">
+      <input matInput [matDatepicker]="picker" placeholder="{{ defaultDateStr }}" [formControl]="dateControl">
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </form>
