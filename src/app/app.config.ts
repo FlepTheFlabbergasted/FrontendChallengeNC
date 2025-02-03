@@ -1,8 +1,13 @@
-import { ApplicationConfig } from '@angular/core'
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
+import { ApplicationConfig } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { Provider } from '@angular/core';
 import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+  MatDateFormats,
+} from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 export const DATE_FORMAT: MatDateFormats = {
@@ -24,14 +29,18 @@ export const DATE_PROVIDERS: Provider[] = [
   { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT },
 ];
 
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimationsAsync(),
     ...DATE_PROVIDERS,
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'outline', floatLabel: 'always', color: 'primary', subscriptSizing: 'dynamic' },
+      useValue: {
+        appearance: 'outline',
+        floatLabel: 'always',
+        color: 'primary',
+        subscriptSizing: 'dynamic',
+      },
     },
   ],
-}
+};

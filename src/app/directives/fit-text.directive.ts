@@ -1,7 +1,7 @@
 import { AfterViewInit, Directive, ElementRef, inject, Input, OnDestroy } from '@angular/core';
-import { WINDOW } from '../injection-tokens';
-import { debounceTime, fromEvent, Subject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime, fromEvent, Subject } from 'rxjs';
+import { WINDOW } from '../injection-tokens';
 
 @Directive({
   selector: '[appFitText]',
@@ -9,7 +9,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class FitTextDirective implements AfterViewInit, OnDestroy {
   @Input() minFontSizePx = 10;
-  @Input() maxFontSizePx = 500;
+  @Input() maxFontSizePx = 275;
 
   window = inject(WINDOW);
 
@@ -24,22 +24,21 @@ export class FitTextDirective implements AfterViewInit, OnDestroy {
     this.mutationObserver = new MutationObserver(() => this.resizeAndMutationSubject.next());
 
     fromEvent(this.window, 'resize')
-    .pipe(
-      debounceTime(this.resizeAndMutationDebounceTimeMs),
-      takeUntilDestroyed(),
-    )
-    .subscribe(() => this.resizeAndMutationSubject.next());
+      .pipe(debounceTime(this.resizeAndMutationDebounceTimeMs), takeUntilDestroyed())
+      .subscribe(() => this.resizeAndMutationSubject.next());
 
-    this.resizeAndMutationSubject.pipe(
-      debounceTime(this.resizeAndMutationDebounceTimeMs),
-      takeUntilDestroyed(),
-    )
-    .subscribe(() => this.resizeText());
+    this.resizeAndMutationSubject
+      .pipe(debounceTime(this.resizeAndMutationDebounceTimeMs), takeUntilDestroyed())
+      .subscribe(() => this.resizeText());
   }
 
   ngAfterViewInit() {
     this.resizeObserver.observe(this.el.nativeElement.parentElement as Element);
-    this.mutationObserver.observe(this.el.nativeElement, { childList: true, subtree: true, characterData: true });
+    this.mutationObserver.observe(this.el.nativeElement, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
   }
 
   ngOnDestroy(): void {

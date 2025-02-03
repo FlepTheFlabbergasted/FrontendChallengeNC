@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { WINDOW } from '../injection-tokens';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
   window = inject(WINDOW);

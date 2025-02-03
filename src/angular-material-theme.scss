@@ -13,18 +13,20 @@ $purple-palette: (
   600: #c50079,
   700: #af0071,
   800: #99006a,
-  900: #72035e, // Default
+  900: #72035e,
+  // Default
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    600: #ffffff
-  )
+      50: #000000,
+      100: #000000,
+      200: #000000,
+      300: #000000,
+      600: #ffffff,
+    ),
 );
 $neutral-grey-palette: (
   50: #fbf9f9,
-  100: #f5f3f3, // Default
+  100: #f5f3f3,
+  // Default
   200: #edebeb,
   300: #dedcdc,
   400: #bab9b9,
@@ -38,8 +40,8 @@ $neutral-grey-palette: (
     100: #000000,
     200: #000000,
     300: #000000,
-    800: #ffffff
-  )
+    800: #ffffff,
+  ),
 );
 
 $frontend-challenge-primary: mat.define-palette($purple-palette, 900);
@@ -47,21 +49,46 @@ $frontend-challenge-accent: mat.define-palette($neutral-grey-palette, 100);
 
 $app-typography-config: mat.define-typography-config(
   $font-family: 'Open Sauce One',
-  $headline-5: mat.define-typography-level($font-weight: 800, $font-size: 3rem, $line-height: 1.66, $letter-spacing: -0.02em), /* h1 */
-  $headline-6: mat.define-typography-level($font-weight: 400, $font-size: 2rem, $line-height: 1.66, $letter-spacing: normal), /* h2 */
-  /* 0.875rem = 14px at 16px default */
-  $body-1: mat.define-typography-level($font-weight: 400, $font-size: 0.875rem, $line-height: 2, $letter-spacing: normal), /* input and label text */
-  $body-2: mat.define-typography-level($font-weight: 400, $font-size: 0.875rem, $line-height: 1, $letter-spacing: normal), /* p */
+  $headline-5: mat.define-typography-level(
+      $font-weight: 800,
+      $font-size: 3rem,
+      $line-height: 1.66,
+      $letter-spacing: -0.02em,
+    ),
+  /* h1 */
+  $headline-6: mat.define-typography-level(
+      $font-weight: 400,
+      $font-size: 2rem,
+      $line-height: 1.66,
+      $letter-spacing: normal,
+    ),
+  /* h2 */ /* 0.875rem = 14px at 16px default */
+  $body-1: mat.define-typography-level(
+      $font-weight: 400,
+      $font-size: 0.875rem,
+      $line-height: 2,
+      $letter-spacing: normal,
+    ),
+  /* input and label text */
+  $body-2: mat.define-typography-level(
+      $font-weight: 400,
+      $font-size: 0.875rem,
+      $line-height: 1,
+      $letter-spacing: normal,
+    )
+    /* p */,
 );
 
-$frontend-challenge-theme: mat.define-light-theme((
-  color: (
-    primary: $frontend-challenge-primary,
-    accent: $frontend-challenge-accent,
-  ),
-  typography: $app-typography-config,
-  density: 0
-));
+$frontend-challenge-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $frontend-challenge-primary,
+      accent: $frontend-challenge-accent,
+    ),
+    typography: $app-typography-config,
+    density: 0,
+  )
+);
 
 @include mat.typography-hierarchy($app-typography-config);
 @include mat.all-component-themes($frontend-challenge-theme);
