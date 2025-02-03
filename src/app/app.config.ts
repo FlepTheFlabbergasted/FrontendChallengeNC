@@ -1,6 +1,4 @@
 import { ApplicationConfig } from '@angular/core'
-import { provideRouter } from '@angular/router'
-import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import { Provider } from '@angular/core';
 import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
@@ -29,7 +27,6 @@ export const DATE_PROVIDERS: Provider[] = [
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
     provideAnimationsAsync(),
     ...DATE_PROVIDERS,
     {

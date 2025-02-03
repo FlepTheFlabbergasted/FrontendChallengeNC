@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Signal } from '@angular/core'
-import { RouterOutlet } from '@angular/router'
 import { FitTextDirective } from './directives/fit-text.directive'
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,7 +13,6 @@ import { LocalStorageService } from './services/local-storage.service';
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
     FitTextDirective,
     ReactiveFormsModule,
     MatFormFieldModule,
