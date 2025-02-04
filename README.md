@@ -26,8 +26,8 @@ Check out the app on [GitHub Pages](https://fleptheflabbergasted.github.io/Front
     if the vertical size increases too much.
 - Performance
   - If perfomance really becomes an issue, we can explore
-    [some existing libraries and methods](https://css-tricks.com/fitting-text-to-a-container/).
-    There's even someone who have managed to
+    [some existing libraries and methods](https://css-tricks.com/fitting-text-to-a-container/) and
+    benchmark them. There's even someone who have managed to
     [fit text using only SASS](https://piccalil.li/blog/riffing-on-the-latest-css-fit-text-approach/)!
 - Tests
   - If this app is going out to users and should be built further upon, unit and E2E tests would be
