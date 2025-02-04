@@ -1,52 +1,47 @@
-# Description & requirements
+# FrontendChallengeNC
 
-https://fleptheflabbergasted.github.io/FrontendChallengeNC/
+Check out the app on [GitHub Pages](https://fleptheflabbergasted.github.io/FrontendChallengeNC/)!
 
-Your objective in this assignment is to create a countdown app built using this boilerplate (+ any
-other tools of your choice) that follows the design specifications provided
-[in this Figma file](https://www.figma.com/file/UPEugUz5jM9IzIkWft2Y9m/NC-challenge). The app should
-work in portrait as well as in landscape mode while the text displayed on the screen should always
-fill the whole width of the screen.
+## Additional packages used
 
-In your app, it should be possible to define the end date and the name of the event taking place on
-that day. The countdown should always start from the current time and it should display the time
-remaining to your specified end date in the following format: Days, Hours(h), Minutes(m), Seconds(s)
-_(e.g., 3 days, 15 h, 20 m, 5 s)_. To make sure the text always covers the entire screen width, it
-should resize whenever necessary to achieve this objective.
+- [Angular Material](https://material.angular.io/)
+  - UI components
+- [Luxon](https://github.com/moment/luxon#readme)
+  - For working with dates and times
+- [Fontsource](https://fontsource.org/docs/getting-started/introduction)
+  - To self host our font
+- [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages/#readme)
+  - Deployment to GH pages
 
-The purpose of the solution is to “fit” the input text into an element in one line (no line breaks,
-filling the whole width) using the maximum possible font-size.
+## Solution improvements
 
-Please make sure that your text fit solution is reusable and that the event name, as well as the
-specified end date, are persisted between page reloads.
-
-**Once you feel ready to share your solution, please:**
-
-- Commit the code to Github or your favorite VCS.
-- Write a simple README.md explaining how to set up the project (assuming it’s read by a developer
-  who is experienced with all the used tools).
-- Include a URL to a deployed working Web page (use netlify.com or github.io or whatever simple
-  hosting tool that works for you).
-
-Please put the resulting project in a public github repository and provide a link to it. Please make
-it easy for us to test the result.
-
-## Optional goals
-
-You’re free to complete this additional goal to get a higher score if you want!
-
-1. Write suggestions of how this solution can be improved. Describe what the next steps would be in
-   order for this app to be production ready.
+- Dynamic default values
+  - We could set the default data to switch between e.g. Midsummer and Christmas depending on when
+    the app is viewed.
+- Vertical size control
+  - If a too high `maxFontSizePx` is set on the
+    [fit-text directive](src/app/directives/fit-text.directive.ts) and the event title is very very
+    short, the size of the text becomes so large that it pushes the inputs off screen and you have
+    to scroll. To combat this we could implement a check in the directive to not increase font size
+    if the vertical size increases too much.
+- Performance
+  - If perfomance really becomes an issue, we can explore
+    [some existing libraries and methods](https://css-tricks.com/fitting-text-to-a-container/).
+    There's even someone who have managed to
+    [fit text using only SASS](https://piccalil.li/blog/riffing-on-the-latest-css-fit-text-approach/)!
+- Tests
+  - If this app is going out to users and should be built further upon, unit and E2E tests would be
+    good to fill out so that the functionality of the app is kept (and no bugs ofc).
 
 ## Running the app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will
-automatically reload if you change any of the source files.
+- Clone the repository
+- `cd` into the folder
+- Run `npm install`
+- Run `npm run start` to serve the app for development on `http://localhost:4200/`
 
-## Further help
+## Deploying the app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version
-17.3.6.
-
-To get more help on the Angular CLI use `ng help` or go check out the
-[Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `npm run deploy` to deploy the app to GitHub pages using
+[angular-cli-ghpages](https://www.npmjs.com/package/angular-cli-ghpages). Update the `--base-href`
+parameter in [package.json](./package.json) to your own GitHub repo name first if forked.
