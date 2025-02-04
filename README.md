@@ -11,7 +11,7 @@ Check out the app on [GitHub Pages](https://fleptheflabbergasted.github.io/Front
 - [Fontsource](https://fontsource.org/docs/getting-started/introduction)
   - To self host our font
 - [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages/#readme)
-  - Deployment to GH pages
+  - Deployment to GitHub pages
 
 ## Solution improvements
 
@@ -38,7 +38,8 @@ Check out the app on [GitHub Pages](https://fleptheflabbergasted.github.io/Front
 - Clone the repository
 - `cd` into the folder
 - Run `npm install`
-- Run `npm run start` to serve the app for development on `http://localhost:4200/`
+- Run `npm run start` to serve the app for development on
+  [http://localhost:4200/](http://localhost:4200/)
 
 ## Deploying the app
 
