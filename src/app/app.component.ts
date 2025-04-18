@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DateTime, DurationObjectUnits } from 'luxon';
 import { filter, map, startWith, switchMap, timer } from 'rxjs';
 import { FitTextDirective } from './directives/fit-text.directive';
@@ -13,6 +14,7 @@ import { LocalStorageService } from './services/local-storage.service';
   selector: 'app-root',
   standalone: true,
   imports: [
+    RouterModule,
     FitTextDirective,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -24,6 +26,8 @@ import { LocalStorageService } from './services/local-storage.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  private readonly route = inject(ActivatedRoute);
+
   timeUntilEvent$: Signal<DurationObjectUnits | undefined>;
 
   eventForm = new FormGroup({
@@ -54,16 +58,26 @@ export class AppComponent {
       ),
     );
 
-    const storedTitle = this.localStorageService.getSavedState(this.localStorageKeyTitle);
-    const storedDate = this.localStorageService.getSavedState(this.localStorageKeyDate);
+    this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe(paramMap => {
+      const queryParamTitle = paramMap.get('title');
+      const queryParamDate = paramMap.get('date');
 
-    if (storedTitle) {
-      this.titleControl.setValue(storedTitle);
-    }
+      const storedTitle = this.localStorageService.getSavedState(this.localStorageKeyTitle);
+      const storedDate = this.localStorageService.getSavedState(this.localStorageKeyDate);
 
-    if (storedDate) {
-      this.dateControl.setValue(DateTime.fromISO(storedDate));
-    }
+      if (queryParamTitle && queryParamDate) {
+        this.titleControl.setValue(queryParamTitle);
+        this.dateControl.setValue(DateTime.fromISO(queryParamDate));
+      } else {
+        if (storedTitle) {
+          this.titleControl.setValue(storedTitle);
+        }
+
+        if (storedDate) {
+          this.dateControl.setValue(DateTime.fromISO(storedDate));
+        }
+      }
+    });
 
     this.titleControl.valueChanges
       .pipe(takeUntilDestroyed())

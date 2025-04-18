@@ -1,6 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { Provider } from '@angular/core';
+import { ApplicationConfig, Provider } from '@angular/core';
 import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
 import {
   DateAdapter,
@@ -9,6 +7,8 @@ import {
   MatDateFormats,
 } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideRouter } from '@angular/router';
 
 export const DATE_FORMAT: MatDateFormats = {
   parse: {
@@ -31,6 +31,7 @@ export const DATE_PROVIDERS: Provider[] = [
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideRouter([]),
     provideAnimationsAsync(),
     ...DATE_PROVIDERS,
     {
